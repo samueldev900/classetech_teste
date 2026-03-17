@@ -1,6 +1,6 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
-class Principal extends CI_Controller{
+class Principal extends MY_Controller{
 	public $doctrine;
 
 	function __construct(){
@@ -8,7 +8,6 @@ class Principal extends CI_Controller{
 		if (! isset($this->doctrine)) {
 			$this->load->library('doctrine');
 		}
-		header('Content-Type: application/json');
 	}
 	
 	public function povoar(){
@@ -27,6 +26,11 @@ class Principal extends CI_Controller{
 			$this->doctrine->em->persist($atividade);
 			$this->doctrine->em->flush();
 		}
+
+		$this->response('Banco povoado com sucesso.', 200, array(
+			'projeto' => $projeto->getId(),
+			'atividades' => 10,
+		));
 	}
 
 

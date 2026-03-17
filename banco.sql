@@ -2,7 +2,8 @@
 SQLyog  v11.01 (32 bit)
 MySQL - 5.5.24-log : Database - appteste
 *********************************************************************
-*/
+*/
+
 
 /*!40101 SET NAMES utf8 */;
 
@@ -30,7 +31,7 @@ DROP TABLE IF EXISTS `atividade`;
 
 CREATE TABLE `atividade` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `dataCadastro` datetime DEFAULT NULL,
+  `dataCadastro` datetime DEFAULT CURRENT_TIMESTAMP,
   `descricao` varchar(255) DEFAULT NULL,
   `idProjeto` bigint(20) DEFAULT NULL,
   PRIMARY KEY (`id`),

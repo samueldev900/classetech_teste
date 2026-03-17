@@ -61,7 +61,8 @@ $route['atividades/(:num)']['put'] = 'atividade/update/$1';
 $route['atividades/(:num)']['patch'] = 'atividade/update/$1';
 $route['atividades/(:num)']['delete'] = 'atividade/delete/$1';
 $route['atividades/projeto/(:num)']['get'] = 'atividade/projeto/$1';
+$route['projetos']['get'] = 'projeto/index';
 $route['projetos/(:num)/atividades']['get'] = 'atividade/projeto/$1';
 
 
-$route['/principal/povoar']['get'] = 'principal/povoar';
+$route['principal/povoar']['get'] = 'principal/povoar';
