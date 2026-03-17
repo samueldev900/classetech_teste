@@ -1,8 +1,13 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 class Principal extends CI_Controller{
+	public $doctrine;
+
 	function __construct(){
 		parent::__construct();
+		if (! isset($this->doctrine)) {
+			$this->load->library('doctrine');
+		}
 		header('Content-Type: application/json');
 	}
 	

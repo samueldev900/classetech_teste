@@ -24,7 +24,7 @@ class Doctrine
 		require APPPATH . 'config/database.php';
 
 		$connection_options = array(
-			'driver'		=> 'pdo_mysql',
+			'driver'		=> 'mysqli',
 			'user'			=> $db['default']['username'],
 			'password'		=> $db['default']['password'],
 			'host'			=> $db['default']['hostname'],
