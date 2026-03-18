@@ -1,6 +1,6 @@
 /*
 SQLyog  v11.01 (32 bit)
-MySQL - 5.5.24-log : Database - appteste
+MySQL - 5.5.24-log : Database - classetech_teste
 *********************************************************************
 */
 

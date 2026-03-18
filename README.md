@@ -19,11 +19,11 @@ Aplicação completa de gerenciamento de atividades com backend em **PHP (CodeIg
 Crie o banco e importe o schema:
 
 ```sql
-CREATE DATABASE appteste CHARACTER SET utf8 COLLATE utf8_general_ci;
+CREATE DATABASE classetech_teste CHARACTER SET utf8 COLLATE utf8_general_ci;
 ```
 
 ```bash
-mysql -u root -p appteste < banco.sql
+mysql -u root -p classetech_teste < banco.sql
 ```
 
 Configure suas credenciais em `application/config/database.php`:
@@ -32,7 +32,7 @@ Configure suas credenciais em `application/config/database.php`:
 'hostname' => 'localhost',
 'username' => 'root',
 'password' => 'SUA_SENHA',
-'database' => 'appteste',
+'database' => 'classetech_teste',
 ```
 
 ---
