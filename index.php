@@ -57,6 +57,43 @@
 
 /*
  *---------------------------------------------------------------
+ * LOAD .env FILE
+ *---------------------------------------------------------------
+ *
+ * Parse a .env file in the project root and populate $_ENV so
+ * that application/config/database.php and other configs can
+ * read credentials without hardcoding them.
+ */
+	$_env_file = __DIR__ . '/.env';
+	if (is_file($_env_file)) {
+		$_env_lines = file($_env_file, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES);
+		foreach ($_env_lines as $_env_line) {
+			$_env_line = trim($_env_line);
+			if ($_env_line === '' || $_env_line[0] === '#') continue;
+			if (strpos($_env_line, '=') === FALSE) continue;
+			list($_env_key, $_env_val) = explode('=', $_env_line, 2);
+			$_env_key = trim($_env_key);
+			$_env_val = trim($_env_val);
+			// Strip surrounding single or double quotes from the value
+			if (strlen($_env_val) >= 2) {
+				$_env_first = $_env_val[0];
+				$_env_last  = $_env_val[strlen($_env_val) - 1];
+				if (($_env_first === '"' && $_env_last === '"') ||
+				    ($_env_first === "'" && $_env_last === "'")) {
+					$_env_val = substr($_env_val, 1, -1);
+				}
+			}
+			if ( ! array_key_exists($_env_key, $_ENV)) {
+				$_ENV[$_env_key] = $_env_val;
+				putenv("{$_env_key}={$_env_val}");
+			}
+		}
+		unset($_env_file, $_env_lines, $_env_line, $_env_key, $_env_val, $_env_first, $_env_last);
+	}
+	unset($_env_file);
+
+/*
+ *---------------------------------------------------------------
  * ERROR REPORTING
  *---------------------------------------------------------------
  *
